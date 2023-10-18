@@ -42,7 +42,18 @@ struct Stocks_ExWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        Text(entry.date, style: .time)
+        VStack {
+            HeaderView()
+                .background(
+                    LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .leading, endPoint: .trailing)
+                )
+                .cornerRadius(20)
+            VStack {
+                ListCellView(object: DataModel.data[0])
+                ListCellView(object: DataModel.data[1])
+            }.padding(5)
+        }
+        .padding()
     }
 }
 
@@ -56,12 +67,14 @@ struct Stocks_ExWidget: Widget {
         }
         .configurationDisplayName("My Widget")
         .description("This is an example widget.")
+        .supportedFamilies([.systemLarge])
+
     }
 }
 
 struct Stocks_ExWidget_Previews: PreviewProvider {
     static var previews: some View {
         Stocks_ExWidgetEntryView(entry: SimpleEntry(date: Date()))
-            .previewContext(WidgetPreviewContext(family: .systemSmall))
+            .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }
