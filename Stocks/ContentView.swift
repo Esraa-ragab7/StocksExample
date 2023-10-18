@@ -9,13 +9,20 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationView {
+            VStack {
+                HeaderView()
+                    .background(
+                        LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .leading, endPoint: .trailing)
+                    )
+                    .cornerRadius(20)
+                List(DataModel.data, id: \.self) { object in
+                    ListCellView(object: object)
+                }.listStyle(PlainListStyle())
+            }
+            .padding()
+            
         }
-        .padding()
     }
 }
 
