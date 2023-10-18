@@ -47,10 +47,10 @@ struct Stocks_ExWidgetEntryView : View {
                 .background(
                     LinearGradient(gradient: Gradient(colors: [.blue, .green]), startPoint: .leading, endPoint: .trailing)
                 )
-                .cornerRadius(20)
+                .cornerRadius(20).minimumScaleFactor(0.6)
             VStack {
-                ListCellView(object: DataModel.data[0])
-                ListCellView(object: DataModel.data[1])
+                ListCellView(object: DataModel.data[0]).minimumScaleFactor(0.6)
+                ListCellView(object: DataModel.data[1]).minimumScaleFactor(0.6)
             }.padding(5)
         }
         .padding()
